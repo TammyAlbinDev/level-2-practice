@@ -16,7 +16,14 @@ console.log("Step 1:", exampleTruck.describe());   // Welcome to Taco Rocket!
 
 // TODO: Make an object for YOUR truck with a name and a describe() method that uses this.name.
 // TODO: Log the result of calling describe().
+const myTruck = {
+  name: "Kajun Cowboy Kitchen",
+  describe: function () {
+    return "Welcome to " + this.name + "!";
+  }
+};
 
+console.log(myTruck.describe());
 
 // ---------- Step 2: Compare with an arrow function ----------
 // Example:
@@ -44,6 +51,14 @@ console.log("Step 3 price:", exampleParsed.price);
 
 // TODO: Write a JSON string for one of YOUR menu items. Parse it. Log one property.
 
+const myFoodJSON = '{"name": "Gumbo", "price": 8.50, "spicy": true}';
+
+const myFood = JSON.parse(myFoodJSON);
+
+console.log("My JSON text:", myFoodJSON);
+console.log("My food object:", myFood);
+console.log("My food price:", myFood.price);
+
 
 // ---------- Step 4: JavaScript → JSON text ----------
 // Example:
@@ -51,6 +66,11 @@ const exampleBack = JSON.stringify(exampleParsed);
 console.log("Step 4:", exampleBack, typeof exampleBack);   // it's a string again
 
 // TODO: Turn your parsed menu item back into a JSON string and log it with typeof.
+
+const myFoodText = JSON.stringify(myFood);
+
+console.log("My JSON again:", myFoodText);
+console.log("My JSON type:", typeof myFoodText);
 
 
 // ---------- Extra practice (if you finish early) ----------
