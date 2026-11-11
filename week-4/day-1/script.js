@@ -1,4 +1,5 @@
-// Week 4 Day 1 — forEach: a shorter way to loop
+
+ // Week 4 Day 1 — forEach: a shorter way to loop
 // forEach runs a function once for every item. No counter, no i.
 //
 // Every step works the same way:
@@ -6,14 +7,13 @@
 //   2. Copy it under YOUR TURN.
 //   3. Change what the comment says.
 
-// First: replace this menu with YOUR truck's menu (keep the same shape).
+// Your Kajun Cowboy Kitchen menu
 const menu = [
-  { name: "Taco", price: 4.5 },
-  { name: "Burrito", price: 9 },
-  { name: "Nachos", price: 6.25 },
-  { name: "Churro", price: 3 },
+  { name: "Chicken and Sausage Gumbo", price: 8.50 },
+  { name: "Cajun Jambalaya", price: 9.00 },
+  { name: "Shrimp Po Boy", price: 12.50 },
+  { name: "Crawfish Etouffee", price: 13.00 },
 ];
-
 
 // ---------- Step 1: Same job, no counter ----------
 // THE for LOOP YOU ALREADY KNOW: logs every name.
@@ -22,42 +22,45 @@ for (let i = 0; i < menu.length; i++) {
 }
 
 // EXAMPLE: the same job with forEach.
-// Remember form.addEventListener("submit", handleSubmit)? You handed the browser
-// a function to run later. Here you hand forEach a function. It runs it once for
-// each item, and passes that item in. So item is the Taco, then the Burrito...
 function logName(item) {
   console.log(item.name);
 }
 menu.forEach(logName);
 
 // YOUR TURN: log every item's PRICE.
-// Change: logName → logPrice (2 places), and .name → .price
+function logPrice(item) {
+  console.log(item.price);
+}
+menu.forEach(logPrice);
 
 
 // ---------- Step 2: Write the function right inside ----------
-// EXAMPLE: logs "Taco is on the menu", "Burrito is on the menu"...
-// This is the same idea, but the function has no name and sits inside the ( ).
-// You'll see this shape everywhere. Notice how it ends: });
+// EXAMPLE: logs each food name.
 menu.forEach(function (item) {
   console.log(item.name + " is on the menu");
 });
 
-// YOUR TURN: log "Taco costs $4.5", "Burrito costs $9"...
-// Change: " is on the menu" → " costs $" + item.price
+// YOUR TURN: log each food name and price.
+menu.forEach(function (item) {
+  console.log(item.name + " costs $" + item.price);
+});
 
 
 // ---------- Step 3: Put the menu on the page ----------
+
 // EXAMPLE: puts every NAME on the page, one per line.
 // It's the same "keep what's there and add one more" move as Menu Card.
-const menuText = document.querySelector("#menu-text");
-menuText.textContent = "";
-menu.forEach(function (item) {
-  menuText.textContent = menuText.textContent + item.name + "\n";
-});
+
 
 // YOUR TURN: don't copy this one. Change the example above,
-// so each line shows the name AND the price, like "Taco: $4.5".
-// Change: item.name → item.name + ": $" + item.price
+
+const menuText = document.querySelector("#menu-text");
+menuText.textContent = "";
+
+menu.forEach(function (item) {
+  menuText.textContent = menuText.textContent + item.name + ": $" + item.price + "\n";
+});
+
 
 
 // ---------- Extra (if you finish early): add it up ----------
@@ -71,3 +74,11 @@ console.log("Items:", count);
 
 // YOUR TURN: add up every PRICE into a total. Log it.
 // Change: count → total, and + 1 → + item.price
+
+let total = 0;
+
+menu.forEach(function (item) {
+  total = total + item.price;
+});
+
+console.log("Menu total: $" + total.toFixed(2));
